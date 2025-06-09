@@ -19,10 +19,19 @@ if (urlParams.has("page")) {
 
 
 async function fetchData() {
-    let response = await fetch(`https://jsonplaceholder.typicode.com/todos/`)
-    console.log('Response: ', response)
-    let json = await response.json()
-    console.log('JSON Response: ', json)
+    try {
+        let response = await fetch(`https://j1sonplaceholder.typicode.com/todos?bacon=fresh`)
+        console.log('Response: ', response)
+        let json = await response.json()
+        console.log('JSON Response: ', json)
+
+        if (json.length < 1) {
+            console.log('No data found')
+        }
+    } catch (error) {
+        console.error('Error fetching data: ', error)
+        alert('Error fetching data: ' + error.message)
+    }
 }
 
 fetchData()
