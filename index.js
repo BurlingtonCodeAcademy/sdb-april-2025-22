@@ -16,3 +16,13 @@ if (urlParams.has("page")) {
 } else {
     console.log('URL does not have parameters')
 }
+
+
+async function fetchData() {
+    let response = await fetch(`https://jsonplaceholder.typicode.com/todos/`)
+    console.log('Response: ', response)
+    let json = await response.json()
+    console.log('JSON Response: ', json)
+}
+
+fetchData()
